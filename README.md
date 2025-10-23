@@ -1,0 +1,2 @@
+# aictl
+Terminal based AI 
