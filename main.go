@@ -1,10 +1,9 @@
 package main
 
 import (
-	"fmt"
+	"github.com/linuxer77/aictl/cmd"
 )
 
 func main() {
-	getTree := Tree()
-	fmt.Println(len(getTree))
+	cmd.Execute()
 }

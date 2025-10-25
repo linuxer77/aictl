@@ -4,26 +4,21 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"os"
 
 	"github.com/google/generative-ai-go/genai"
-	"github.com/joho/godotenv"
 	"google.golang.org/api/option"
 )
 
 func GenText(str string) string {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error:", err)
-	}
-	env := os.Getenv("GEMINI_API_KEY")
+	// err := godotenv.Load()
+	// env := os.Getenv('GEMINI_API_KEY')
 
 	ctx := context.Background()
-	client, err := genai.NewClient(ctx, option.WithAPIKey(env))
+	client, err := genai.NewClient(ctx, option.WithAPIKey("your-api-key"))
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 	defer client.Close()
 
 	model := client.GenerativeModel("gemini-2.5-flash-lite")
@@ -36,8 +31,6 @@ func GenText(str string) string {
 	return getResp
 }
 
-
-
 func printResponse(resp *genai.GenerateContentResponse) string {
 	var validResp string
 	for _, cand := range resp.Candidates {
@@ -49,4 +42,3 @@ func printResponse(resp *genai.GenerateContentResponse) string {
 	}
 	return validResp
 }
-

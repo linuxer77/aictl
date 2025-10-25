@@ -6,10 +6,9 @@ import (
 	"github.com/linuxer77/aictl/internal/tree"
 )
 
-func GetPrompt() string {
+func GetPrompt(query string) string {
 	getTree := tree.Tree()
 
-	var query string
 	prompt := fmt.Sprintf(`You're a {shell} terminal assistant. Your job is to translate natural language instructions into a single, raw, executable {shell} command.
 Follow these rules carefully:
 1. The output must be a valid {shell} command:
