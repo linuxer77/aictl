@@ -1,0 +1,11 @@
+# Ignore environment files and credentials
+.env
+.env.*          # e.g. .env.production, .env.staging
+.env.local
+.env.*.local
+.envrc
+*.env           # any other files ending in .env
+.local.env
+secrets.*
+.secrets
+credentials.*
