@@ -24,3 +24,8 @@ func GetCurrDir() string {
 	}
 	return dir
 }
+
+func NoTree() string {
+	cwd := GetCurrDir()
+	return cwd
+}

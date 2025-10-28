@@ -9,18 +9,20 @@ import (
 )
 
 func CommandRes() *cobra.Command {
-	var query string
+	var notree bool
 	cmd := &cobra.Command{
 		Use:   "go",
 		Short: "i know its just a wrapper",
 		Args:  cobra.ExactArgs(1),
 		Run: func(cmd *cobra.Command, args []string) {
-			query = args[0]
-			p := prompt.GetPrompt(query)
+			query := args[0]
+			p := prompt.GetPrompt(query, notree)
 			llmRes := utils.GenText(p)
 			fmt.Println(llmRes)
 		},
 	}
+	cmd.Flags().BoolVarP(&notree, "treecond", "n", false, "tree or not tree?")
+
 	return cmd
 }
 
